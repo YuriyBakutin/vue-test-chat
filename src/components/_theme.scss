@@ -1,0 +1,175 @@
+$standardPadding: 5px;
+$borderWidth: 2px;
+$bigButtonSize: 22px;
+$smallButtonSize: 16px;
+$inputBlock: 26px;
+$emtyLineHeight: 8px;
+
+$controlShadow: 1px 1px 2px 0 black;
+
+$borderColor: rgb(39, 39, 39);
+$headerColor: darkgray;
+$headerBackgroundColor: $borderColor;
+$backgroundColorActive: gray;
+$backgroundColorInactive: rgb(92, 92, 92);
+$backgroundHalfColor: mix($backgroundColorActive, $backgroundColorInactive, 50);
+$colorInactive: rgb(73, 73, 73);
+$colorBybackgroundColorInactive: white;
+$colorBybackgroundColorActive: black;
+$placeholderColor: rgb(54, 54, 54);
+
+$topLeftInputBorderColor: rgb(88, 88, 88);
+$rightBottomInputBorderColor: rgb(156, 156, 156);
+$rightBottomInputBorderColorInactive: rgb(139, 139, 139);;
+$topLeftInputBorder: 1px solid $topLeftInputBorderColor;
+$rightBottomInputBorder: 2px solid $rightBottomInputBorderColor;
+
+$scrollbarColor: rgb(82, 82, 82);
+$scrollbarThumbColor: gray;
+%inputInactive {
+  border-top: $topLeftInputBorder;
+  border-left: $topLeftInputBorder;
+  border-bottom: $rightBottomInputBorderColorInactive;
+  border-right: $rightBottomInputBorderColorInactive;
+  background-color: $backgroundColorInactive;
+}
+%input {
+  border-top: $topLeftInputBorder;
+  border-left: $topLeftInputBorder;
+  border-bottom: $rightBottomInputBorder;
+  border-right: $rightBottomInputBorder;
+  @extend %baseFont;
+  background-color: $backgroundColorActive;
+}
+%borderedBlock {
+  border: $borderWidth solid $borderColor;
+  background-color: $colorInactive;
+  padding: 0;
+}
+%flexRowEnvelope {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+}
+%flexColumnEnvelope {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+}
+%flexRowContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+%controlBlock {
+  @extend %flexRowContainer;
+  justify-content: space-evenly;
+  @extend %borderedBlock;
+  background-color: $backgroundColorActive;
+}
+%flexRowControlBlock {
+  @extend %controlBlock;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+%inputBlock {
+  @extend %flexRowControlBlock;
+  justify-content: space-between;
+  padding: $standardPadding 0;
+  height: $inputBlock;
+}
+%heder {
+  @extend %flexRowContainer;
+  justify-content: center;
+  @extend %borderedBlock;
+  background-color: $headerBackgroundColor;
+  color: $headerColor;
+  padding: $standardPadding 0;
+}
+%caption {
+  white-space: nowrap;
+  color: $colorBybackgroundColorActive;
+  padding: 0 $standardPadding;
+}
+%control {
+  cursor: pointer;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+}
+%button {
+  @extend %flexRowContainer;
+  justify-content: space-evenly;
+  @extend %control;
+}
+%smallButton {
+  @extend %button;
+  width: $smallButtonSize;
+  height: $smallButtonSize;
+  padding: 5px;
+}
+%bigButton {
+  @extend %button;
+  width: $bigButtonSize;
+  height: $bigButtonSize;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: $controlShadow;
+}
+%inactiveButton {
+  color: $colorInactive;
+  cursor: auto !important;
+}
+%flexRowContainerBottom {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+%baseFont {
+  font-family: 'Open Sans', 'ubuntu', arial;
+  font-size: 14px;
+  font-weight: 600;
+  // color: black;
+}
+%layoutBlock {
+  @extend %flexColumnEnvelope;
+  justify-content: start;
+}
+%scrollbar {
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: $scrollbarThumbColor $scrollbarColor;
+  &::-webkit-scrollbar {
+    width: 8px;
+    &:horizontal {
+      height: 8px;
+    }
+  }
+  &::-webkit-scrollbar-track {
+    background: $scrollbarColor;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $scrollbarThumbColor;
+    border: (8px - 6px)/2 solid $scrollbarColor;
+  }
+  &::-webkit-scrollbar-corner {
+    background: $scrollbarColor;
+  }
+}
+%errorTextPlaceholder {
+  color: rgba(73, 0, 0, 0.863);
+  font-weight: bold;
+}
+
+// ----- To see the box borders
+
+// th, td {
+//   border: 1px solid blue;
+// }
+// div {
+//   border: 1px solid red !important;
+// }
